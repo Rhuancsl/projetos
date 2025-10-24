@@ -1,0 +1,94 @@
+<!-- 
+vamos criar um site que vai ter uma lampada 
+que acende,apaga e quebra esta e a proposta de hoje
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhuan light buld</title>
+
+    <style>
+        :root{
+            --eu-rhuan:red;
+            --enzo:blue;
+            --ari:rgb(0, 188, 78);
+        }
+    *{
+    margin: 0;
+    padding:0;
+    box-sizing:border-box;
+    }
+
+    body{
+        background:var(--enzo);
+        background-image: linear-gradient(to top,var(--eu rhuan),var(--enzo));
+        background-attachment: fixed;
+    }
+
+    header,section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button{
+        width: 80px;
+    }
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <h1>lampada</h1>
+    </header>
+
+    <section>
+
+        <div>
+            <img src="img/lamp_off.jpeg" alt="lampada off"id='lamp'>
+        </div>
+
+        <div>
+            <button id="turnOn">ligar</button>
+            <button id="turnOff">desligar</button>
+        </div>
+    </section>
+</body>
+
+<script>
+    const turnOn = document.getElementById('turnOn');
+    const turnOff = document.getElementById('turnOff');
+    const lamp = document.getElementById('lamp');
+
+    function isLampBroken(){
+        return lamp.src.indexOf('quebrada') > -1
+    }
+
+    function lampOn(){
+        if (!isLampBroken()) {
+            lamp.src = './img/lamp_on.jpeg';
+        }
+    }
+
+    function lampOff(){
+        if (!isLampBroken()) {
+            lamp.src = './img/lamp_off.jpeg';
+    }
+ }
+        function lampBroken(){
+            lamp.src = './img/lamp_broke.jpeg';
+          }
+
+          turnOn.addEventListener('click',lampOn);
+          turnOff.addEventListener('click',lampOff);
+          lamp.addEventListener('mouseover',lampOn);
+          lamp.addEventListener('mouseleave',lampOff);
+          lamp.addEventListenedblr('dblclick',lampBroken);
+
+</script>
+
+</html>
